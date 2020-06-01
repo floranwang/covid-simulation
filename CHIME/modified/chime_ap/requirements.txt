@@ -1,0 +1,5 @@
+numpy
+pandas
+python-i18n
+jupyterlab
+matplotlib

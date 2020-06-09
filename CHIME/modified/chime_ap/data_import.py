@@ -4,14 +4,15 @@ from datetime import date
 
 import csv
 
-def main():
-    parsed_data = data_to_dictionary("sample_data_default.csv")
+def main(filename):
+    parsed_data = data_to_dictionary(filename)
     parameters = create_parameters(parsed_data[0])
     #print(parameters.doubling_time)
     sir = Sir(parameters)
     #print(sir.run_projection(parameters, sir.get_policies(parameters)))
     ##Remember to loop through list of dictionaries (parsed_data)
     #print(sir.raw_df)
+    return sir
 
 def data_to_dictionary(filename):
     with open(filename, newline='') as csvfile:
@@ -56,4 +57,4 @@ def create_parameters(parsed_data):
     return p
 
 if __name__ == "__main__":
-    main()
+    main("sample_data_default.csv")

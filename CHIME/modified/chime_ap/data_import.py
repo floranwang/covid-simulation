@@ -7,11 +7,11 @@ import csv
 def main(filename):
     parsed_data = data_to_dictionary(filename)
     parameters = create_parameters(parsed_data[0])
-    #print(parameters.doubling_time)
+#     print(parameters.doubling_time)
     sir = Sir(parameters)
-    #print(sir.run_projection(parameters, sir.get_policies(parameters)))
-    ##Remember to loop through list of dictionaries (parsed_data)
-    #print(sir.raw_df)
+#     print(sir.run_projection(parameters, sir.get_policies(parameters)))
+    #Remember to loop through list of dictionaries (parsed_data)
+#     print(sir.raw_df)
     return sir
 
 def data_to_dictionary(filename):

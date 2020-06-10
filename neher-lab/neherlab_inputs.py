@@ -37,7 +37,7 @@ def customizeEpi(input_row, epi_dict):
     if not math.isnan(input_row['Average days hospitalized']):
         epi_dict['hospitalStayDays'] = input_row['Average days hospitalized']
     if not math.isnan(input_row['Average ICU days']):
-        epi_dict['hospitalStayDays'] = input_row['Average ICU days']
+        epi_dict['icuStayDays'] = input_row['Average ICU days']
     if not math.isnan(input_row['Infectious period (days)']):
         epi_dict['infectiousPeriodDays'] = input_row['Infectious period (days)']
     if not math.isnan(input_row['Latency (days)']):
@@ -88,6 +88,7 @@ for idx, row in input_data.iterrows():
     json_input['ageDistributionData'] = customizeAgeDistribution(row, json_input['ageDistributionData'])
 
     json_input['scenarioData'] = getDefault(country, scenarios)
+    # print(json_input['scenarioData']['data']['epidemiological'])
     json_input['scenarioData']['data']['epidemiological'] = customizeEpi(row, json_input['scenarioData']['data']['epidemiological'])
     json_input['scenarioData']['data']['mitigation']['mitigationIntervals'][0] = customizeMit(row, json_input['scenarioData']['data']['mitigation']['mitigationIntervals'][0])
     json_input['scenarioData']['data']['population'] = customizePop(row, json_input['scenarioData']['data']['population'])
@@ -101,7 +102,5 @@ for idx, row in input_data.iterrows():
     with open(country + '.json', 'w') as json_file:
         json.dump(json_input, json_file)
 
-print(json_input)
-# print()
-# print()
+# print(json_input)
 
